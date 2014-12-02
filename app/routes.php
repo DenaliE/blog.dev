@@ -26,22 +26,19 @@ Route::get('say-hello/{urlname}', function($functionName)
     return View::make('say-hello')->with('viewName', $functionName);
 });
 
-// Route::get('roll-dice', function(){
+Route::get('roll-dice', function(){
 
-//     define ('SIDES_OF_DICE', 6);
-//     $rand = mt_rand(1, SIDES_OF_DICE);
 
-//     return View::make('roll-dice')->with('rand', $rand);
-// });
+    $rand = mt_rand(1, 6);
+
+    return View::make('roll-dice')->with('rand', $rand);
+});
 
 Route::get('roll-dice/{guess}', function($guess){
 
-    define ('SIDES_OF_DICE', 6);
-    $rand = mt_rand(1, SIDES_OF_DICE);
+    $rand = mt_rand(1, 6);
 
     $array = ['guess' => $guess, 'rand' => $rand];
-
-    //return View::make('roll-dice')->with('rand', $rand);
 
     return View::make('roll-dice')->with($array);
 });
@@ -64,11 +61,13 @@ Route::get('roll-dice/{guess}', function($guess){
 
 Route::get('resume', function()
 {
+    return View::make('resume');
     return "This is my resume.";
 });
 
 Route::get('portfolio', function()
 {
+    return View::make('resume');
     return "This is my portfolio.";
 });
 
