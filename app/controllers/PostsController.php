@@ -10,7 +10,8 @@ class PostsController extends \BaseController {
 	public function index()
 	{
 		//
-		return "This is the index.";
+		$posts = Post::all();
+		return View::make('posts.index')->with('posts', $posts);
 	}
 
 
@@ -34,8 +35,16 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
-		return Redirect::back()->withInput();
+		//dd(Input::all());
+		//dd is dump and die. stops running after dump is executed
+		//return Redirect::back()->withInput();
+
+		$post = new Post();
+		$post->title = Input::get('title');
+		$post->body = Input::get('body');
+		$post->save();
+
+		return Redirect::action('PostsController@index')->withInput();
 	}
 
 
@@ -47,8 +56,11 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
-		return "This is show $id.";
+		//$data = array('name' => $name);
+        //return View::make('my-first-view')->with($data);
+		$post = Post::find($id);
+		return View::make('posts.show')->with('post', $post);
+
 	}
 
 
