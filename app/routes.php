@@ -11,37 +11,22 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
+
+Route::get('say-hello/{name}', 'HomeController@sayHello');
+
+Route::get('roll-dice/{guess}', 'HomeController@rollDice');
+
+// Route::get('/', function()
+// {
+// 	return View::make('hello');
+// });
 
 Route::get('say-hello', function()
 {
     return View::make('say-hello')->with('viewName', 'Codeup');
 });
 
-Route::get('say-hello/{urlname}', function($functionName)
-{
-    return View::make('say-hello')->with('viewName', $functionName);
-});
-
-Route::get('roll-dice', function(){
-
-
-    $rand = mt_rand(1, 6);
-
-    return View::make('roll-dice')->with('rand', $rand);
-});
-
-Route::get('roll-dice/{guess}', function($guess){
-
-    $rand = mt_rand(1, 6);
-
-    $array = ['guess' => $guess, 'rand' => $rand];
-
-    return View::make('roll-dice')->with($array);
-});
 
 //first parameter is linked to first variable, sencond to second.
 //They are linked by order, not name. Variable could be named anything.
@@ -71,4 +56,5 @@ Route::get('portfolio', function()
     return "This is my portfolio.";
 });
 
+Route::resource('posts', 'PostsController');
 

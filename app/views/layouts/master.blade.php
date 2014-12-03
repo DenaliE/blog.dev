@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Laravel Blog</title>
+    @yield('head')
     <!-- link bootstrap css here -->
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -10,9 +10,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class=container>
+    <div class= "container">
     @yield('content')
-    <h1>Hi</h1>
-    <html>
+    <div>
 </body>
 </html>
+
+
