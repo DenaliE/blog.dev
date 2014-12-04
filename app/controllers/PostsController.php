@@ -93,6 +93,7 @@ class PostsController extends \BaseController {
 	}//end edit
 
 
+
 	/**
 	 * Update the specified resource in storage.
 	 *
