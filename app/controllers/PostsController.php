@@ -35,6 +35,7 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
+
 		$post = new Post();
 		// call the validator function
 		$this->check($post);
@@ -109,8 +110,8 @@ class PostsController extends \BaseController {
 
 		return Redirect::action('PostsController@show', $post->id);
 
-	}//end update
 
+	}//end update
 
 	/**
 	 * Remove the specified resource from storage.
