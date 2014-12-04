@@ -10,7 +10,7 @@ class PostsController extends \BaseController {
 	public function index()
 	{
 		//
-		$posts = Post::all();
+		$posts = Post::paginate(4);
 		return View::make('posts.index')->with('posts', $posts);
 	}
 
@@ -35,25 +35,32 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		// create the validator
-		$validator = Validator::make(Input::all(), Post::$rules);
 
-		 // attempt validation
-	    if ($validator->fails()) {
-	        // validation failed, redirect to the post create page with validation errors and old inputs
-	        return Redirect::back()->withInput()->withErrors($validator);
-	    } else {
-	        // validation succeeded, create and save the post
-        	$post = new Post();
-        	$post->title = Input::get('title');
-        	$post->body = Input::get('body');
-        	$post->save();
+		$post = new Post();
+		// call the validator function
+		$this->check($post);
 
-	        //return Redirect::action('PostsController@index')->withInput();
-	        return Redirect::action('PostsController@show', $post->id);
-	        }
+	    //return Redirect::action('PostsController@index')->withInput();
+	    return Redirect::action('PostsController@show', $post->id);
+
 
 	}//end store
+
+	protected function check(Post $post)
+	{
+			$validator = Validator::make(Input::all(), Post::$rules);
+
+			 // attempt validation
+		    if ($validator->fails()) {
+		        // validation failed, redirect to the post create page with validation errors and old inputs
+		        return Redirect::back()->withInput()->withErrors($validator);
+			}
+
+		    // validation succeeded, create and save the post
+			$post->title = Input::get('title');
+			$post->body = Input::get('body');
+			$post->save();
+	}//end check
 
 	/**
 	 * Display the specified resource.
@@ -68,7 +75,7 @@ class PostsController extends \BaseController {
 		$post = Post::find($id);
 		return View::make('posts.show')->with('post', $post);
 
-	}
+	}//end show
 
 
 	/**
@@ -81,8 +88,10 @@ class PostsController extends \BaseController {
 	{
 		//
 		$post = Post::find($id);
+
 		return View::make('posts.edit')->with('post', $post);
-	}
+	}//end edit
+
 
 
 	/**
@@ -94,6 +103,7 @@ class PostsController extends \BaseController {
 	public function update($id)
 	{
 		//
+
 		$post = Post::find($id);
 		$post->title = Input::get('title');
 		$post->body = Input::get('body');
@@ -101,8 +111,8 @@ class PostsController extends \BaseController {
 
 		return Redirect::action('PostsController@show', $post->id);
 
-	}
 
+	}//end update
 
 	/**
 	 * Remove the specified resource from storage.
