@@ -38,15 +38,17 @@ class PostsController extends \BaseController {
 		//dd(Input::all());
 		//dd is dump and die. stops running after dump is executed
 		//return Redirect::back()->withInput();
-
+		if (Input::has('title') && Input::has('body'))
+		{
 		$post = new Post();
 		$post->title = Input::get('title');
 		$post->body = Input::get('body');
 		$post->save();
 
-		return Redirect::action('PostsController@index')->withInput();
-	}
-
+		//return Redirect::action('PostsController@index')->withInput();
+		return Redirect::action('PostsController@show', $post->id);
+		} return 'Please enter all values.';
+	}//end store
 
 	/**
 	 * Display the specified resource.
@@ -73,7 +75,8 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		//
-		return "This is edit $id.";
+		$post = Post::find($id);
+		return View::make('posts.edit')->with('post', $post);
 	}
 
 
@@ -86,6 +89,13 @@ class PostsController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$post = Post::find($id);
+		$post->title = Input::get('title');
+		$post->body = Input::get('body');
+		$post->save();
+
+		return Redirect::action('PostsController@show', $post->id);
+
 	}
 
 
