@@ -10,6 +10,7 @@
     {{$post->id}}
     {{$post->title}}
     {{$post->body}}
+    {{ ' Posted '.$post->created_at->diffForHumans()}}
     </p>
 @endforeach
 
