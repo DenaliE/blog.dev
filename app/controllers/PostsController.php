@@ -2,6 +2,13 @@
 
 class PostsController extends \BaseController {
 
+
+	public function __construct(){
+
+		parent::__construct();
+
+		$this->beforeFilter('auth', array('except'=> array('index', 'show')));
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -38,21 +45,18 @@ class PostsController extends \BaseController {
 
 		$post = new Post();
 		// call the validator function
-		$this->check($post);
-
-	    //return Redirect::action('PostsController@index')->withInput();
-	    return Redirect::action('PostsController@show', $post->id);
-
-
+		return $this->savePost($post);
 	}//end store
 
-	protected function check(Post $post)
+	protected function savePost(Post $post)
 	{
 			$validator = Validator::make(Input::all(), Post::$rules);
 
 			 // attempt validation
 		    if ($validator->fails()) {
 		        // validation failed, redirect to the post create page with validation errors and old inputs
+				Session::flash('errorMessage', "Your message was not saved. Please try again.");
+
 		        return Redirect::back()->withInput()->withErrors($validator);
 			}
 
@@ -60,6 +64,11 @@ class PostsController extends \BaseController {
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
 			$post->save();
+
+			Session::flash('successMessage', "You saved sucessfully.");
+
+			return Redirect::action('PostsController@show', $post->id);
+
 	}//end check
 
 	/**
@@ -70,10 +79,15 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
+		try {
 		//$data = array('name' => $name);
         //return View::make('my-first-view')->with($data);
-		$post = Post::find($id);
+		$post = Post::findOrFail($id);
 		return View::make('posts.show')->with('post', $post);
+
+		} catch (Exception $e){
+			App::abort(404);
+		}
 
 	}//end show
 
@@ -105,12 +119,7 @@ class PostsController extends \BaseController {
 		//
 
 		$post = Post::find($id);
-		$post->title = Input::get('title');
-		$post->body = Input::get('body');
-		$post->save();
-
-		return Redirect::action('PostsController@show', $post->id);
-
+		return $this->savePost($post);
 
 	}//end update
 
@@ -123,6 +132,11 @@ class PostsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		$post = Post::findOrFail($id);
+
+		$post->delete();
+
+		return Redirect::action('PostsController@index');
 	}
 
 

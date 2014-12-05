@@ -71,3 +71,10 @@ Route::get('orm-test', function ()
     $post2->body  = 'The body for post number two.';
     $post2->save();
 });
+
+Route::get('login', 'HomeController@showLogin');
+Route::post('login', 'HomeController@doLogin');
+Route::get('logout', 'HomeController@doLogout');
+
+Route::resource('posts', 'PostsController');
+

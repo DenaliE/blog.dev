@@ -1,11 +1,6 @@
 @extends ('layouts.master')
 @section('head')
 <title>My Blog Posts</title>
-<style type="text/css">
-#content{
-    padding-top: 120px;
-}
-</style>
 @stop
 
 @section('content')
@@ -17,8 +12,32 @@
     {{$post->body}}
     {{ ' Posted '.$post->created_at->diffForHumans()}}
     </p>
+
+    <button class="btn btn-danger delete-btn" data-post-id="{{{$post->id}}}">Delete</button>
 @endforeach
 
+
+{{ Form::open(['method' => 'delete', 'id' =>'delete-form']) }}
+
+{{ Form::close() }}
+
 {{ $posts->links() }}
+
+@stop
+
+@section('bottomscript')
+<script type="text/javascript">
+$(".delete-btn").click(function(){
+
+    var postId = $(this).data('post-id');
+
+        $("#delete-form").attr('action', '/posts/' + postId);
+
+        if (confirm('Are you sure you want to delete this post?'))
+    {
+        $("#delete-form").submit();
+    }
+});
+</script>
 
 @stop
