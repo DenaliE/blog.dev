@@ -1,6 +1,7 @@
 @extends ('layouts.master')
 @section('head')
-<title>Form</title>
+<title>My Blog Posts</title>
+
 @stop
 
 @section('content')

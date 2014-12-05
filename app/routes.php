@@ -47,13 +47,13 @@ Route::get('say-hello', function()
 Route::get('resume', function()
 {
     return View::make('resume');
-    return "This is my resume.";
+
 });
 
 Route::get('portfolio', function()
 {
-    return View::make('resume');
-    return "This is my portfolio.";
+    return View::make('portfolio');
+
 });
 
 Route::resource('posts', 'PostsController');

@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 @section('head')
-<title>Form</title>
+<title>{{$post->title}}</title>
 @stop
 
 @section('content')
