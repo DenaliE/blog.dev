@@ -60,7 +60,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div class= "container">
+    <div id="content" class= "container">
     @yield('content')
     <div>
 </body>

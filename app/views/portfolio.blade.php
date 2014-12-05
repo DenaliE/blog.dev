@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Freelancer - Start Bootstrap Theme</title>
+<title>Denali Endicott</title>
 
 <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
