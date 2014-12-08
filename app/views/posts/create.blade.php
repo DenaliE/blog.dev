@@ -1,6 +1,7 @@
 @extends ('layouts.master')
 @section('head')
 <title>Form</title>
+
 @stop
 
 @section('content')
