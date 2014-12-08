@@ -4,8 +4,8 @@ class  UserTableSeeder extends DatabaseSeeder {
     public function run()
     {
         $user = new User();
-        $user->email = "denali@codeup.com";
-        $user->password = Hash::make("password");
+        $user->email = $_ENV['DEFAULT_USER'];
+        $user->password = Hash::make($_ENV['DEFAULT_PASS']);
 
         $user->save();
 
