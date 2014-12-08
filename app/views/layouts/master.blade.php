@@ -16,7 +16,7 @@
 
     <style type="text/css">
         body {
-            margin-top: 120px;
+            margin-top: 200px;
         }
 
         @media (min-width: 768px){

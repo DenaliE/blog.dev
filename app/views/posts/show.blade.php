@@ -4,6 +4,8 @@
 @stop
 
 @section('content')
+
+
 <p>
 {{$post->id}}
 {{$post->title}}

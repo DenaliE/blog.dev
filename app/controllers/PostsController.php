@@ -16,9 +16,19 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-		$posts = Post::paginate(4);
-		return View::make('posts.index')->with('posts', $posts);
+		if(Input::has('search')){
+
+			$var = Input::get('search');
+			$queries = Post::with('user')->where('title', 'like', "%$var%");
+
+			$posts = $queries->paginate(4);
+			// $posts = $queries->orderBy('created_at', 'DESC')->paginate(4);
+			return View::make('posts.index')->with('posts', $posts);
+		} else {
+			$posts = Post::with('user')->paginate(4);
+			return View::make('posts.index')->with('posts', $posts);
+		}
+
 	}
 
 
@@ -61,6 +71,7 @@ class PostsController extends \BaseController {
 			}
 
 		    // validation succeeded, create and save the post
+		    $post->user_id = Auth::id();
 			$post->title = Input::get('title');
 			$post->body = Input::get('body');
 			$post->save();
