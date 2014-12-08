@@ -21,7 +21,7 @@
 
 {{ Form::close() }}
 
-{{ $posts->links() }}
+{{ $posts->appends('search', 'some value')->links() }}
 
 @stop
 
