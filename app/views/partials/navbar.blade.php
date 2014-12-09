@@ -42,12 +42,13 @@
                 <li class="page-scroll">
                     <a href="{{ action('PostsController@index')}}">Blog</a>
 
-                  <form class="navbar-form navbar-left" role="search">
+
+                {{ Form::open(['action' => ['PostsController@index'], 'method' => 'GET', 'class' => "navbar-form navbar-left", 'role' => "search"])}}
                       <div class="form-group">
                         <input type="text" class="form-control" name="search" placeholder="Search">
                       </div>
                       <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+               {{ Form::close() }}
                 </li>
             </ul>
         </div>
