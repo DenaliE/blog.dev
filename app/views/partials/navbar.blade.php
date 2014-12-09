@@ -42,7 +42,7 @@
                 <li class="page-scroll">
                     <a href="{{ action('PostsController@index')}}">Blog</a>
 
-
+                    <!-- method GET, plus action pointing to PostsController@index allows the search to work on any page. the action redirects it to the index funtion, and the GET function appends the search term to a question mark in the url, aka, a get request.-->
                 {{ Form::open(['action' => ['PostsController@index'], 'method' => 'GET', 'class' => "navbar-form navbar-left", 'role' => "search"])}}
                       <div class="form-group">
                         <input type="text" class="form-control" name="search" placeholder="Search">
