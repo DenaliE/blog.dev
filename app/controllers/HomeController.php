@@ -16,29 +16,10 @@ class HomeController extends BaseController {
 	*/
 
 
-	public function showHome()
-	{
-		return View::make('portfolio');
-	}
-
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
-
-	public function sayHello($name){
-
-		    return View::make('say-hello')->with('viewName', $name);
-	}
-
-	public function rollDice($guess){
-
-	    $rand = mt_rand(1, 6);
-
-	    $array = ['guess' => $guess, 'rand' => $rand];
-
-	    return View::make('roll-dice')->with($array);
-	}
+public function showHome()
+{
+	return View::make('portfolio');
+}
 
  public function showLogin(){
 
@@ -68,7 +49,31 @@ class HomeController extends BaseController {
  	return Redirect::action('HomeController@showLogin');
  }
 
+
+public function showWelcome()
+{
+	return View::make('hello');
+}
+
+public function contactMe()
+{
+	//take inputs
+}
+
+
+
+public function sayHello($name){
+
+	    return View::make('say-hello')->with('viewName', $name);
+}
+
+public function rollDice($guess){
+
+    $rand = mt_rand(1, 6);
+
+    $array = ['guess' => $guess, 'rand' => $rand];
+
+    return View::make('roll-dice')->with($array);
+}
+
 }//closes class
-
-
-

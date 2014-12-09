@@ -109,13 +109,13 @@
     <!-- About Section -->
     <section class="success" id="about">
         <div class="container">
-            <div class="row col-lg-offset-2">
-                    <img id = "ak" class="img-responsive" src="img/ak.jpg" alt="">
-            </div>
                 <div class="row col-lg-12 text-center">
                     <h2>About</h2>
                     <hr class="star-light">
                 </div>
+            <div class="row col-lg-offset-2">
+                    <img id = "ak" class="img-responsive" src="img/ak.jpg" alt="">
+            </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
@@ -193,10 +193,10 @@
                         <ul class="list-inline">
 
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                <a href="https://twitter.com/denaliendicott" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/in/denalie" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
                             </li>
 
                         </ul>

@@ -11,14 +11,17 @@
 |
 */
 
+Route::get('/', 'HomeController@showHome');
+
+Route::resource('posts', 'PostsController');
+
+Route::get('login', 'HomeController@showLogin');
+Route::post('login', 'HomeController@doLogin');
+Route::get('logout', 'HomeController@doLogout');
+
 Route::get('say-hello/{name}', 'HomeController@sayHello');
 
 Route::get('roll-dice/{guess}', 'HomeController@rollDice');
-
-// Route::get('/', function()
-// {
-// 	return View::make('hello');
-// });
 
 Route::get('say-hello', function()
 {
@@ -48,9 +51,6 @@ Route::get('resume', function()
 
 });
 
-Route::get('/', 'HomeController@showHome');
-
-Route::resource('posts', 'PostsController');
 
 Route::get('orm-test', function ()
 {
@@ -66,9 +66,4 @@ Route::get('orm-test', function ()
     $post2->save();
 });
 
-Route::get('login', 'HomeController@showLogin');
-Route::post('login', 'HomeController@doLogin');
-Route::get('logout', 'HomeController@doLogout');
-
-Route::resource('posts', 'PostsController');
 

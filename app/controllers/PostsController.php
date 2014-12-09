@@ -65,25 +65,25 @@ class PostsController extends \BaseController {
 
 	protected function savePost(Post $post)
 	{
-			$validator = Validator::make(Input::all(), Post::$rules);
+		$validator = Validator::make(Input::all(), Post::$rules);
 
-			 // attempt validation
-		    if ($validator->fails()) {
-		        // validation failed, redirect to the post create page with validation errors and old inputs
-				Session::flash('errorMessage', "Your message was not saved. Please try again.");
+		 // attempt validation
+	    if ($validator->fails()) {
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+			Session::flash('errorMessage', "Your message was not saved. Please try again.");
 
-		        return Redirect::back()->withInput()->withErrors($validator);
-			}
+	        return Redirect::back()->withInput()->withErrors($validator);
+		}
 
-		    // validation succeeded, create and save the post
-		    $post->user_id = Auth::id();
-			$post->title = Input::get('title');
-			$post->body = Input::get('body');
-			$post->save();
+	    // validation succeeded, create and save the post
+	    $post->user_id = Auth::id();
+		$post->title = Input::get('title');
+		$post->body = Input::get('body');
+		$post->save();
 
-			Session::flash('successMessage', "You saved sucessfully.");
+		Session::flash('successMessage', "You saved sucessfully.");
 
-			return Redirect::action('PostsController@show', $post->id);
+		return Redirect::action('PostsController@show', $post->id);
 
 	}//end check
 
@@ -132,8 +132,6 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-
 		$post = Post::find($id);
 		return $this->savePost($post);
 

@@ -13,9 +13,10 @@
     {{ ' Posted '.$post->created_at->diffForHumans()}}
     </p>
 
+    <a class="btn btn-default" data-post-id="{{{$post->id}}}" href="{{{action('PostsController@edit', $post->id)}}}">Edit</a>
+
     <button class="btn btn-danger delete-btn" data-post-id="{{{$post->id}}}">Delete</button>
 @endforeach
-
 
 {{ Form::open(['method' => 'delete', 'id' =>'delete-form']) }}
 

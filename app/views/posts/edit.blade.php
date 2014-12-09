@@ -1,11 +1,11 @@
 @extends ('layouts.master')
 @section('head')
-<title>Form</title>
+<title>Edit a Post</title>
 @stop
 
 @section('content')
 
-    {{ Form::model($post, ['action' => ['PostsController@update', $post->id], 'method' =>'PUT']) }}
+    {{ Form::model($post, ['action' => ['PostsController@update', $post->id], 'method' =>'PUT', 'id' => 'edit-form']) }}
     <div class="col-md-6">
         <div class='form-group'>
             <label for="title">Title</label>
@@ -18,7 +18,7 @@
             </textarea>
         </div>
 
-        <button class='btn btn-default'>Add</button>
+        <button class='btn btn-default'>Edit</button>
     </div>
     {{ Form::close() }}
 @stop

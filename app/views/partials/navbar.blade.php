@@ -24,14 +24,15 @@
                     <a href="{{ action('PostsController@create') }}">Create New Posts</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
+                    <a href="{{ action('HomeController@doLogout') }}">Logout</a>
+                </li>
 
                 @else
                 <li class="page-scroll"><a href="{{ action('HomeController@showLogin') }}">Log in</a></li>
                 @endif
 
                 <li class="page-scroll">
-                    <a href="{{ action('HomeController@showHome')}}">Portfolio</a>
+                    <a href="{{ action('HomeController@showHome')}}">Home</a>
                 </li>
                 <li class="page-scroll">
                     <a href="{{ action('HomeController@showHome')}}#about">About</a>
