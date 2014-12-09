@@ -14,10 +14,10 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
+            <ul class="nav navbar-nav">
+                <!-- <li class="hidden">
                     <a href="#page-top"></a>
-                </li>
+                </li> -->
 
                 @if (Auth::check())
                 <li class="page-scroll">
@@ -31,19 +31,20 @@
                 @endif
 
                 <li class="page-scroll">
-                    <a href="#portfolio">Portfolio</a>
+                    <a href="{{ action('HomeController@showHome')}}">Portfolio</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#about">About</a>
+                    <a href="{{ action('HomeController@showHome')}}#about">About</a>
                 </li>
                 <li class="page-scroll">
-                    <a href="#contact">Contact</a>
+                    <a href="{{ action('HomeController@showHome')}}#contact">Contact</a>
                 </li>
                 <li class="page-scroll">
                     <a href="{{ action('PostsController@index')}}">Blog</a>
-
-                    <!-- method GET, plus action pointing to PostsController@index allows the search to work on any page. the action redirects it to the index funtion, and the GET function appends the search term to a question mark in the url, aka, a get request.-->
-                {{ Form::open(['action' => ['PostsController@index'], 'method' => 'GET', 'class' => "navbar-form navbar-left", 'role' => "search"])}}
+                </li>
+                    <!-- method GET, plus action pointing to PostsController@index, allows the search to work on any page. the action redirects it to the index funtion, and the GET function appends the search term to a question mark in the url, aka, a get request.-->
+                <li class="page-scroll">
+                {{ Form::open(['action' => ['PostsController@index'], 'method' => 'GET', 'class' => "navbar-form", 'role' => "search"])}}
                       <div class="form-group">
                         <input type="text" class="form-control" name="search" placeholder="Search">
                       </div>

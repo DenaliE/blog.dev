@@ -21,9 +21,7 @@
 
 {{ Form::close() }}
 
-{{--@if(Input::has('search')) {{ $posts->appends('search', $var)->links() }}
-@else {{ $posts->links() }}
-@endif--}}
+{{ $posts->appends(['search' => $search])->links() }}
 
 @stop
 

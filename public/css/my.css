@@ -1,0 +1,15 @@
+#ak {
+    padding-bottom: 20px;
+}
+
+body {
+        margin-top: 200px;
+    }
+
+@media (min-width: 768px){
+    header .container {
+        padding-top: 20px;
+        margin-top: -75px;
+    }
+}
+

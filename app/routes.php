@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
-
 Route::get('say-hello/{name}', 'HomeController@sayHello');
 
 Route::get('roll-dice/{guess}', 'HomeController@rollDice');
@@ -50,11 +48,7 @@ Route::get('resume', function()
 
 });
 
-Route::get('portfolio', function()
-{
-    return View::make('portfolio');
-
-});
+Route::get('/', 'HomeController@showHome');
 
 Route::resource('posts', 'PostsController');
 

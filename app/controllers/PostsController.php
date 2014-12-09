@@ -18,21 +18,21 @@ class PostsController extends \BaseController {
 	{
 		$query = Post::with('user');
 
-		$var = Input::get('search');
+		$search = Input::get('search');
 
 		if(Input::has('search')){
 
 			//searches in title or body
-			$query->where('title', 'LIKE', "%$var%")
-				  ->orWhere('body', 'LIKE', "%$var%");
+			$query->where('title', 'LIKE', "%$search%")
+				  ->orWhere('body', 'LIKE', "%$search%");
 
-			$posts = $query->orderBy('created_at', 'DESC')->paginate(4);
+			$posts = $query->orderBy('created_at', 'DESC')->paginate(2);
 
 		} else {
 			$posts = Post::with('user')->paginate(4);
 		}
 
-		return View::make('posts.index')->with('posts', $posts);
+		return View::make('posts.index')->with('posts', $posts)->with('search', $search);
 
 	}
 
