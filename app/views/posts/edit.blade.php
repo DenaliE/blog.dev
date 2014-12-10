@@ -14,8 +14,7 @@
 
         <div class='form-group'>
             <label for="body">Blog Post</label>
-            <textarea name="body" class="form-control" rows="3"> {{{ $post->body }}}
-            </textarea>
+            <textarea name="body" class="form-control" rows="3">{{{ $post->body }}}</textarea>
         </div>
 
         <button class='btn btn-default'>Edit</button>

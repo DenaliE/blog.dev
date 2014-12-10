@@ -6,16 +6,19 @@
 @section('content')
 
 @foreach ($posts as $post)
-    <p>
-    {{$post->id}}
-    {{$post->title}}
-    {{$post->body}}
-    {{ ' Posted '.$post->created_at->diffForHumans()}}
-    </p>
+<p>
+Title: {{$post->title}}
+</p>
+<p>
+{{$post->body}}
+</p>
+<p>
+{{ ' Posted '.$post->created_at->diffForHumans()}}
+</p>
 
-    <a class="btn btn-default" data-post-id="{{{$post->id}}}" href="{{{action('PostsController@edit', $post->id)}}}">Edit</a>
+    <a class="btn btn-default bottom" data-post-id="{{{$post->id}}}" href="{{{action('PostsController@edit', $post->id)}}}">Edit</a>
 
-    <button class="btn btn-danger delete-btn" data-post-id="{{{$post->id}}}">Delete</button>
+    <button class="btn btn-danger delete-btn bottom" data-post-id="{{{$post->id}}}">Delete</button>
 @endforeach
 
 {{ Form::open(['method' => 'delete', 'id' =>'delete-form']) }}

@@ -7,16 +7,21 @@
 
 
 <p>
-{{$post->id}}
-{{$post->title}}
+Title: {{$post->title}}
+</p>
+
+<p>
 {{$post->body}}
 </p>
 
+<div class= 'bottom'>
 {{ Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'delete', 'id' => 'delete-form'])}}
+<a class="btn btn-default" data-post-id="{{{$post->id}}}" href="{{{action('PostsController@edit', $post->id)}}}">Edit</a>
 
  {{Form::submit('Delete!', ['class' => 'btn btn-danger'])}}
 
 {{Form::close()}}
+</div>
 
 
 @stop

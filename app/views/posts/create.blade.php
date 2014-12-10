@@ -18,8 +18,7 @@
         <div class='form-group'>
 
             <label for="body">Blog Post</label>
-            <textarea name="body" class="form-control" rows="3"> {{{ Input::old('body') }}}
-            </textarea>
+            <textarea name="body" class="form-control" rows="3">{{{ Input::old('body') }}}</textarea>
 
             {{ $errors->first('body', '<span class="help-block">:message</span>') }}
         </div>

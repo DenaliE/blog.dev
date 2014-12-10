@@ -60,8 +60,6 @@ public function contactMe()
 	//take inputs
 }
 
-
-
 public function sayHello($name){
 
 	    return View::make('say-hello')->with('viewName', $name);
